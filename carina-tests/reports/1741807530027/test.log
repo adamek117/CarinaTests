@@ -1,0 +1,19 @@
+[2025-03-12 07:25:30] [1] [INFO] 
+============= Basic configuration =============
+env=DEMO
+=========== WebDriver configuration ===========
+url=https://fakestoreapi.com
+localization_encoding=UTF-8
+language=en_US
+-------------- Driver capabilities ------------
+===============================================
+
+[2025-03-12 07:25:30] [1] [WARN] Reporting disabled: using no op test run registrar
+[2025-03-12 07:25:32] [1] [INFO] Set thread-count=1
+[2025-03-12 07:25:32] [1] [INFO] Set data-provider-thread-count=1
+[2025-03-12 07:25:32] [1] [INFO] CARINA_CORE_VERSION: 1.3.0
+[2025-03-12 07:25:39] [1] [INFO] INFO: '**************** Test execution summary ****************'.
+[2025-03-12 07:25:39] [1] [INFO] RESULT #1: TEST [Surefire test - testCreateUser] FAIL [log=file://C:\tools\exercises\EclipseWorkspace\CarinaTests\CarinaTests\carina-tests\reports\1741807530027/6dca2fde-bc77-44f8-8160-3f256caab66e/test.log]
+[2025-03-12 07:25:39] [1] [INFO] RESULT #2: TEST [Surefire test - testDeleteUser] FAIL [log=file://C:\tools\exercises\EclipseWorkspace\CarinaTests\CarinaTests\carina-tests\reports\1741807530027/41706373-bd03-4115-a477-fb50abffe113/test.log]
+[2025-03-12 07:25:39] [1] [INFO] RESULT #3: TEST [Surefire test - testGetUser] FAIL [log=file://C:\tools\exercises\EclipseWorkspace\CarinaTests\CarinaTests\carina-tests\reports\1741807530027/d0e2b301-342c-4fcf-bd6a-58794ef02a82/test.log]
+[2025-03-12 07:25:39] [1] [INFO] RESULT #4: TEST [Surefire test - testGetUsers] FAIL [log=file://C:\tools\exercises\EclipseWorkspace\CarinaTests\CarinaTests\carina-tests\reports\1741807530027/b77211b1-5801-4058-b802-1e4b9f1e3a95/test.log]

@@ -1,0 +1,58 @@
+[2025-03-12 07:30:26] [1] [WARN] Reporting disabled: using no op test run registrar
+[2025-03-12 07:30:26] [1] [INFO] TEST [Surefire test - testDeleteUser] STARTED at [20:30:26 2025-03-12]
+[2025-03-12 07:30:26] [1] [INFO] Test - delete user
+[2025-03-12 07:30:26] [1] [INFO] Request method:	DELETE
+Request URI:	https://fakestoreapi.com/users/1
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "id": 1
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:30:25 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"120-HNMhv14aQeBJetA9fBvavCZ+gdk"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=Cqzr1X9vky7YMsJTC%2BK5eGxTYnAi6rOMFS4WQmu7oEMkR%2F%2BFo6Mtxpq98Q4lnzWEXf61fa0IUZZrZgmt0o8w6jg78FcA5oZfJ1Il%2BJxphPPX7W4TYSLfp7AVcqlUbL8A%2FTKy"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5b4bc9fe3570e-WAW
+Content-Encoding: gzip
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=18965&min_rtt=14009&rtt_var=7193&sent=5&recv=6&lost=0&retrans=0&sent_bytes=3127&recv_bytes=869&delivery_rate=246043&cwnd=252&unsent_bytes=0&cid=50525eaa68e08400&ts=180&x=0"
+
+{
+    "address": {
+        "geolocation": {
+            "lat": "-37.3159",
+            "long": "81.1496"
+        },
+        "city": "kilcoole",
+        "street": "new road",
+        "number": 7682,
+        "zipcode": "12926-3874"
+    },
+    "id": 1,
+    "email": "john@gmail.com",
+    "username": "johnd",
+    "password": "m38rmF$",
+    "name": {
+        "firstname": "john",
+        "lastname": "doe"
+    },
+    "phone": "1-570-236-7033",
+    "__v": 0
+}
+
+[2025-03-12 07:30:26] [1] [INFO] TEST [Surefire test - testDeleteUser] PASSED at [20:30:26 2025-03-12]

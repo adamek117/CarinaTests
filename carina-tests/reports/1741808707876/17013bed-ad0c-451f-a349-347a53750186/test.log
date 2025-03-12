@@ -1,0 +1,155 @@
+[2025-03-12 07:45:10] [1] [WARN] Reporting disabled: using no op test run registrar
+[2025-03-12 07:45:10] [1] [INFO] TEST [Surefire test - testCreateUser] STARTED at [20:45:10 2025-03-12]
+[2025-03-12 07:45:10] [1] [INFO] Test - create user
+[2025-03-12 07:45:10] [1] [INFO] Base properties loaded: api/users/user.properties
+[2025-03-12 07:45:13] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:45:11 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 9
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"9-hVv0cNJophUD7CGn+ZqXp8tVGo0"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=M3O%2BkezAZcmWkchfi8xr0Mtvwpf8Y6fdyVMd5iIkLOCTTxqyx22IKbNtR4DGggYhQGei5ss80lZjaf412DNZg2ieQAyfKBt%2BygvxSX80473eLFXl5URAqpUfLZaLsIgcO8Qx"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5ca60de5670be-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=22176&min_rtt=13728&rtt_var=20514&sent=7&recv=8&lost=0&retrans=0&sent_bytes=3128&recv_bytes=936&delivery_rate=161134&cwnd=252&unsent_bytes=0&cid=d493d8430be032df&ts=398&x=0"
+
+{
+    "id": 11
+}
+
+[2025-03-12 07:45:14] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:45:13 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 8
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"8-h5EdGu1QmHe4OkjsU292jNzSLfE"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=F6FenL9ACCNy9QffQJ3aS950v%2FGKPigK%2BXWF5rzU4Vkgz1ifV94dO3eYWZEQs7kcd0n2qlPHdzkDRUQ09zQNmES11HF5hwADwHkYvJbWRfaklcGm3aeo%2BL9GmrogYqofznsr"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5ca694efbef8d-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=15404&min_rtt=14488&rtt_var=5396&sent=5&recv=6&lost=0&retrans=0&sent_bytes=3126&recv_bytes=936&delivery_rate=219870&cwnd=252&unsent_bytes=0&cid=e1b67d1643671843&ts=181&x=0"
+
+{
+    "id": 1
+}
+
+[2025-03-12 07:45:15] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:45:14 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 8
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"8-h5EdGu1QmHe4OkjsU292jNzSLfE"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=oP%2FsXVg0Rzxj9cADYzSC3fcYmTt5OSNFj4m7qtWh1tdKdL4NuI62Z0hdsy1LNcgovZ5D9sxQ8bmpPRhXhc8TllyK0OWzAdNGao%2FcxN7ZMEdWzM4S0o3DjpN2b6bTbO8XraFT"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5ca71ac03b86d-VIE
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=48877&min_rtt=41160&rtt_var=20833&sent=5&recv=7&lost=0&retrans=0&sent_bytes=3127&recv_bytes=936&delivery_rate=61762&cwnd=252&unsent_bytes=0&cid=8e6d7a40b2f003ef&ts=213&x=0"
+
+{
+    "id": 1
+}
+
+[2025-03-12 07:45:15] [1] [ERROR] TEST [Surefire test - testCreateUser] FAILED at [20:45:15 2025-03-12] - id
+Value type 'Integer' doesn't match to expected type 'integer'
+
+
+org.skyscreamer.jsonassert.JSONAssert.assertEquals(JSONAssert.java:482)
+org.skyscreamer.jsonassert.JSONAssert.assertEquals(JSONAssert.java:464)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:339)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:299)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:363)
+com.solvd.carina.tests.APITests.testCreateUser(APITests.java:39)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:568)
+org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+org.testng.TestRunner.privateRun(TestRunner.java:848)
+org.testng.TestRunner.run(TestRunner.java:621)
+org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+org.testng.SuiteRunner.run(SuiteRunner.java:336)
+org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+org.testng.TestNG.runSuites(TestNG.java:1114)
+org.testng.TestNG.run(TestNG.java:1082)
+org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)

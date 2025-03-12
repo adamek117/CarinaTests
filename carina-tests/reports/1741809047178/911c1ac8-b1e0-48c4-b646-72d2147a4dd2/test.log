@@ -1,0 +1,113 @@
+[2025-03-12 07:50:49] [1] [WARN] Reporting disabled: using no op test run registrar
+[2025-03-12 07:50:49] [1] [INFO] TEST [Surefire test - testCreateUser] STARTED at [20:50:49 2025-03-12]
+[2025-03-12 07:50:49] [1] [INFO] Test - create user
+[2025-03-12 07:50:49] [1] [INFO] Base properties loaded: api/users/user.properties
+[2025-03-12 07:50:52] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:50:51 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 9
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"9-hVv0cNJophUD7CGn+ZqXp8tVGo0"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=WhtPIFzW7sVdt4JYX5u%2F45PD2SFZsTIgufxC87bhS1B0ey3QsMuhhIPON7swM3BxVsfOPf66h9u2GkCIXqEyaO7ZlX%2FwEWM2lvC9l8%2FMxcXGkkM3N%2F76Wx2GeO%2BR65sU9jpN"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5d2a8bdd8c60b-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=22777&min_rtt=17240&rtt_var=11552&sent=7&recv=7&lost=0&retrans=0&sent_bytes=3127&recv_bytes=936&delivery_rate=164733&cwnd=252&unsent_bytes=0&cid=8efbcded5384c444&ts=344&x=0"
+
+{
+    "id": 11
+}
+
+[2025-03-12 07:50:53] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:50:52 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 8
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"8-h5EdGu1QmHe4OkjsU292jNzSLfE"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=jEwksxBE%2BerTWB88hzgId51ku%2FVA4Y5jeVKV6ZbczNot%2FJIUUu6vBz5%2FUruTJlaNOZX2YII2hbYG3FU%2BThQ%2FRZqxH6QRAdy0oI1cGLUeAC5AvmaTqQ7XwkUJ%2F0uGHo7OaEM9"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5d2b15a7abfbc-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=18441&min_rtt=14992&rtt_var=6608&sent=5&recv=6&lost=0&retrans=0&sent_bytes=3127&recv_bytes=936&delivery_rate=202471&cwnd=243&unsent_bytes=0&cid=4bce02637e700c3e&ts=177&x=0"
+
+{
+    "id": 1
+}
+
+[2025-03-12 07:50:54] [1] [INFO] Request method:	POST
+Request URI:	https://fakestoreapi.com/users
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "email": "mathew@car",
+    "username": "Mathew123",
+    "password": "password"
+}
+HTTP/1.1 200 OK
+Date: Wed, 12 Mar 2025 19:50:53 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 9
+Connection: keep-alive
+access-control-allow-origin: *
+etag: W/"9-hVv0cNJophUD7CGn+ZqXp8tVGo0"
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=U7z%2Fu%2BCiYhkvO0GQ3PgrG6ztyS%2BLefr68U7Y8TPuXSVdcSMqHr3Rb6HwkuwUBMiKmR81yHmB5gJobeRzgbz7VDKUxdv6f0sSQrOxUsjzqh4LtSDLpSZeXjAtEoa90xdBdoqs"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 91f5d2b929adc3bb-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=13566&min_rtt=12209&rtt_var=5962&sent=5&recv=6&lost=0&retrans=0&sent_bytes=3126&recv_bytes=936&delivery_rate=208119&cwnd=240&unsent_bytes=0&cid=276b6b4479fc3602&ts=192&x=0"
+
+{
+    "id": 11
+}
+
+[2025-03-12 07:50:54] [1] [INFO] TEST [Surefire test - testCreateUser] PASSED at [20:50:54 2025-03-12]
