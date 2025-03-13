@@ -1,2 +1,24 @@
+
 {
-}
+    "address":{
+      "geolocation":{
+        "lat": "regex:[\\d]+",
+        "long": "regex:[\\d]+"
+      },
+      "city": "type:String",
+      "street": "type:String",
+      "number": "regex:[\\d]+",
+      "zipcode": "regex:[\\d]{5}-[\\d]{4}"
+    },
+    "id": "regex:[\\d]",
+    "email": "regex:[a-zA-Z\\d\\_\\.]+@[a-z]+\\.[a-z]{2,4}",
+    "username": "regex:[a-zA-Z\\d]+",
+    "password": "regex:[a-zA-Z\\d]+",
+    "name":{
+      "firstname": "type:String",
+      "lastname": "type:String"
+    },
+    "phone": "regex:^\\d{1}-\\d{3}-\\d{3}-\\d{4}$",
+    "__v": "type:Integer"
+  }
+

@@ -9,10 +9,11 @@ import org.apache.logging.log4j.Logger;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.annotations.Test;
 
-import com.solvd.carina.tests.api.DeleteUserMethod;
-import com.solvd.carina.tests.api.GetUsersMethod;
-import com.solvd.carina.tests.api.PostUserMethod;
-import com.solvd.carina.tests.api.GetUserMethod;
+import com.solvd.carina.tests.api.users.DeleteUserMethod;
+import com.solvd.carina.tests.api.users.GetUserMethod;
+import com.solvd.carina.tests.api.users.GetUsersMethod;
+import com.solvd.carina.tests.api.users.PostUserMethod;
+import com.solvd.carina.tests.api.users.PutUserMethod;
 import com.zebrunner.carina.api.APIMethodPoller;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.core.IAbstractTest;
@@ -20,8 +21,8 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.core.registrar.tag.Priority;
 import com.zebrunner.carina.core.registrar.tag.TestPriority;
 
-public class APITests implements IAbstractTest {
-    private static final Logger LOGGER = LogManager.getLogger(APITests.class);
+public class APIUserTests implements IAbstractTest {
+    private static final Logger LOGGER = LogManager.getLogger(APIUserTests.class);
 
     @Test()
     @MethodOwner(owner = "adam")
@@ -69,7 +70,18 @@ public class APITests implements IAbstractTest {
         DeleteUserMethod deleteUserMethod = new DeleteUserMethod();
         deleteUserMethod.setUserId("1");
         deleteUserMethod.callAPIExpectSuccess();
-        deleteUserMethod.validateResponse();
+        deleteUserMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
+
+    @Test()
+    @MethodOwner(owner = "adam")
+    public void testUpdateUser(){
+        LOGGER.info("Test - update user");
+        PutUserMethod putUserMethod = new PutUserMethod();
+        putUserMethod.setUserId("1");
+        putUserMethod.callAPIExpectSuccess();
+        putUserMethod.validateResponse();
+    }
+
 
 }

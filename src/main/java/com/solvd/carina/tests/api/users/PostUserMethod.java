@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.api;
+package com.solvd.carina.tests.api.users;
 
 import com.zebrunner.carina.api.AbstractApiMethodV2;
 import com.zebrunner.carina.api.annotation.Endpoint;
