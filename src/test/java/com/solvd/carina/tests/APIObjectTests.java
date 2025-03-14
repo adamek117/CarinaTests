@@ -18,7 +18,7 @@ public class APIObjectTests {
     
     @Test()
     @MethodOwner(owner = "adam")
-    public void testPostObject(){
+    public void testCreateObject(){
         LOGGER.info("Test - partially update object");
         PostObjectMethod postObjectMethod = new PostObjectMethod();
         postObjectMethod.callAPI();
