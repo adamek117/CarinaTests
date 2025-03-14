@@ -11,8 +11,9 @@ import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 
-public class PatchObjectMethodObjectTests {
-    private static final Logger LOGGER = LogManager.getLogger(PatchObjectMethodObjectTests.class);
+
+public class APIObjectTests {
+    private static final Logger LOGGER = LogManager.getLogger(APIObjectTests.class);
 
     
     @Test()
@@ -20,8 +21,8 @@ public class PatchObjectMethodObjectTests {
     public void testPostObject(){
         LOGGER.info("Test - partially update object");
         PostObjectMethod postObjectMethod = new PostObjectMethod();
-        postObjectMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         postObjectMethod.callAPI();
+        postObjectMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         postObjectMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
 
     }
