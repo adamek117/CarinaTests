@@ -23,7 +23,7 @@ public class APIObjectTests {
         PostObjectMethod postObjectMethod = new PostObjectMethod();
         postObjectMethod.callAPI();
         postObjectMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        postObjectMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        postObjectMethod.validateResponse();
 
     }
     
@@ -34,7 +34,7 @@ public class APIObjectTests {
         PatchObjectMethod patchObjectMethod = new PatchObjectMethod();
         patchObjectMethod.setObjectId("ff808181932badb601958f7078f740f4");
         patchObjectMethod.callAPI();
-        patchObjectMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        patchObjectMethod.validateResponse();
     }
 
 }

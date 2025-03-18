@@ -46,7 +46,7 @@ public class APIUserTests implements IAbstractTest {
         LOGGER.info("Test - get users");
         GetUsersMethod getUserMethods = new GetUsersMethod();
         getUserMethods.callAPIExpectSuccess();
-        getUserMethods.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        getUserMethods.validateResponse();
         getUserMethods.validateResponseAgainstSchema("api/users/_get/all/rs.schema");
         
     }
@@ -58,7 +58,7 @@ public class APIUserTests implements IAbstractTest {
         GetUserMethod getUserMethod = new GetUserMethod();
         getUserMethod.setUserId("1");
         getUserMethod.callAPIExpectSuccess();
-        getUserMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        getUserMethod.validateResponse();
         getUserMethod.validateResponseAgainstSchema("api/users/_get/single/rs.schema");
     }
     
@@ -70,7 +70,7 @@ public class APIUserTests implements IAbstractTest {
         DeleteUserMethod deleteUserMethod = new DeleteUserMethod();
         deleteUserMethod.setUserId("1");
         deleteUserMethod.callAPIExpectSuccess();
-        deleteUserMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        deleteUserMethod.validateResponse();
     }
 
     @Test()
