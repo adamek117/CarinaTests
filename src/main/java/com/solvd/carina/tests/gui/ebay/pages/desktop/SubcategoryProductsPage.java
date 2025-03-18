@@ -13,22 +13,39 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SubcategoryProductsPageBase.class)
-public class SubcategoryProductsPage extends SubcategoryProductsPageBase{
+public class SubcategoryProductsPage extends SubcategoryProductsPageBase {
 
     private static final Logger LOGGER = LogManager.getLogger(SubcategoryProductsPage.class);
 
-    @FindBy(css ="")
+    /*
+     * @FindBy(css ="ul.seoel.items > li ")
+     * private List<ExtendedWebElement> subSubcategories;
+     */
+
+    @FindBy(css = "span.textual-display.seo-card__title.line-clamp-2.center")
     private List<ExtendedWebElement> subSubcategories;
 
     public SubcategoryProductsPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
     }
 
     @Override
     public SubSubcategoryProductsPageBase selectSubSubcategory(String subSubCategoryName) {
         LOGGER.info("selecting " + subSubCategoryName + " category...");
-        for (ExtendedWebElement cat : subSubcategories) {
-            String currentCategory = cat.getText();
+        for(ExtendedWebElement catSub : subSubcategories){
+            String currentSubsubcategory = catSub.getText().trim();
+            LOGGER.info("current category: " + currentSubsubcategory);
+            if(subSubCategoryName.equalsIgnoreCase(currentSubsubcategory)){
+                catSub.click();
+                return initPage(getDriver(), SubSubcategoryProductsPageBase.class);
+            }
+        }
+        return null;
+        
+        
+        /*for (ExtendedWebElement cat : subSubcategories) {
+            String currentCategory = cat.
             LOGGER.info("current category: " + currentCategory);
             if(subSubCategoryName.equalsIgnoreCase(currentCategory)){
                 cat.click();
@@ -36,9 +53,7 @@ public class SubcategoryProductsPage extends SubcategoryProductsPageBase{
             }
 
         }
-        throw new RuntimeException("Unable to open category: " + subSubCategoryName);
+        throw new RuntimeException("Unable to open category: " + subSubCategoryName);*/
     }
 
-   
 }
-

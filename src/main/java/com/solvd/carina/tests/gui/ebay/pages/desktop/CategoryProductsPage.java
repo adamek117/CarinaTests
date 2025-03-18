@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,10 +17,10 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 public class CategoryProductsPage extends CategoryProductsPageBase {
     private static final Logger LOGGER = LogManager.getLogger(CategoryProductsPage.class);
     
-    @FindBy(xpath = "/html/body/div[2]/div[2]/section[2]/section[1]/div/ul")
+    @FindBy(css = "ul.brwel__items > li")
     private List<ExtendedWebElement> subcategories;
 
-    @FindBy(className= "seoel__items")
+    @FindBy(css= "ul.seoel__items > li")
     private List<ExtendedWebElement> subcategoriesWithPhoto;
 
     public CategoryProductsPage(WebDriver driver) {
@@ -30,7 +31,7 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
     public SubcategoryProductsPageBase selectSubcategory(String subcategory) {
         LOGGER.info("selecting " + subcategory + " category...");
         for (ExtendedWebElement cat : subcategories) {
-            String currentCategory = cat.getText();
+            String currentCategory = cat.getText().trim();
             LOGGER.info("current category: " + currentCategory);
             if(subcategory.equalsIgnoreCase(currentCategory)){
                 cat.click();

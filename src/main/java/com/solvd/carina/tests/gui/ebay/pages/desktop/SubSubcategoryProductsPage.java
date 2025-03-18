@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.pages.common.SubSubcategoryProductsPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.ProductInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -17,18 +16,27 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 public class SubSubcategoryProductsPage extends SubSubcategoryProductsPageBase {
     private static final Logger LOGGER = LogManager.getLogger(SubSubcategoryProductsPage.class);
 
-    @FindBy(className = "brwrvr__item-results brwrvr__item-results--list")
-    private List<ProductItem> products;
+    //@FindBy(css = "ul.brwrvr__item-results brwrvr__item-results--list > li")
+    @FindBy(css = "h3.textual-display.bsig__title__text")
+    private List<ExtendedWebElement> products;
+
 
     public SubSubcategoryProductsPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
     }
 
     @Override
     public ProductInfoPageBase selectProduct(String productTitle) {
-        for (ExtendedWebElement product : products) {
-            throw new UnsupportedOperationException("Unimplemented method 'selectProduct'");
+        LOGGER.info("selecting " + productTitle + " category...");
+        for(ExtendedWebElement catSub : products){
+            String currentProduct = catSub.getText().trim();
+            LOGGER.info("current category: " + currentProduct);
+            if(productTitle.equalsIgnoreCase(currentProduct)){
+                catSub.click();
+                return initPage(getDriver(), ProductInfoPageBase.class);
+            }
         }
-                return null;
+        return null;
     }
 }

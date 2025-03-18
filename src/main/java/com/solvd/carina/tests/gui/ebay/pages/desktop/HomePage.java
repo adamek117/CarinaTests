@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
@@ -27,7 +30,8 @@ public class HomePage extends HomePageBase {
     @FindBy(css = "li.vl-flyout-nav__js-tab > a")
     private List<ExtendedWebElement> categories;
 
-    @FindBy(css = ".vl-flyout-nav__sub-cat-col")
+    //@FindBy(css = ".vl-flyout-nav__sub-cat-col")
+    @FindBy(className = "vl-flyout-nav__sub-cat-col")
     private List<ExtendedWebElement> subcategories;
 
     public HomePage(WebDriver driver) {
@@ -40,7 +44,7 @@ public class HomePage extends HomePageBase {
     public CategoryProductsPageBase selectCategory(String category) {
         LOGGER.info("selecting " + category + " category...");
         for (ExtendedWebElement categ : categories) {
-            String currentCategory = categ.getText();
+            String currentCategory = categ.getText().trim();
             LOGGER.info("current category: " + currentCategory);
             if (category.equalsIgnoreCase(currentCategory)) {
                 categ.click();
