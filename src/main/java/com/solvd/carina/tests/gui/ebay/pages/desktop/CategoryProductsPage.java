@@ -9,17 +9,19 @@ import org.openqa.selenium.support.FindBy;
 
 import com.solvd.carina.tests.gui.ebay.pages.common.SubcategoryProductsPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
-
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CategoryProductsPageBase.class)
 public class CategoryProductsPage extends CategoryProductsPageBase {
     private static final Logger LOGGER = LogManager.getLogger(CategoryProductsPage.class);
-    @FindBy(css = "section.brw-category-nav:nth-child(1) > div:nth-child(2) > ul")
+    
+    @FindBy(xpath = "/html/body/div[2]/div[2]/section[2]/section[1]/div/ul")
     private List<ExtendedWebElement> subcategories;
 
-    @FindBy(xpath = "//div[contains(@class='seoel__items')]")
+    @FindBy(className= "seoel__items")
     private List<ExtendedWebElement> subcategoriesWithPhoto;
-    
+
     public CategoryProductsPage(WebDriver driver) {
         super(driver);
     }
@@ -32,7 +34,7 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
             LOGGER.info("current category: " + currentCategory);
             if(subcategory.equalsIgnoreCase(currentCategory)){
                 cat.click();
-                return initPage(driver, SubcategoryProductsPageBase.class);
+                return initPage(getDriver(), SubcategoryProductsPageBase.class);
             }
 
         }
@@ -47,7 +49,7 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
             LOGGER.info("current category: " + currentCategory);
             if(subcategory.equalsIgnoreCase(currentCategory)){
                 cat.click();
-                return initPage(driver, SubcategoryProductsPageBase.class);
+                return initPage(getDriver(), SubcategoryProductsPageBase.class);
             }
 
         }

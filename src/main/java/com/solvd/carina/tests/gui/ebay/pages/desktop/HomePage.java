@@ -19,12 +19,12 @@ public class HomePage extends HomePageBase {
     private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
 
     @FindBy(id = "gh-ac")
-    private ExtendedWebElement searchBox; // nie wiem jaki typ
+    private ExtendedWebElement searchBox;
 
     @FindBy(id = "gh-search-btn")
     private ExtendedWebElement searchButton;
 
-    @FindBy(css = ".vl-flyout-nav__container")
+    @FindBy(css = "li.vl-flyout-nav__js-tab > a")
     private List<ExtendedWebElement> categories;
 
     @FindBy(css = ".vl-flyout-nav__sub-cat-col")
@@ -32,6 +32,8 @@ public class HomePage extends HomePageBase {
 
     public HomePage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(searchBox);
+        setUiLoadedMarker(searchButton);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class HomePage extends HomePageBase {
             LOGGER.info("current category: " + currentCategory);
             if (category.equalsIgnoreCase(currentCategory)) {
                 categ.click();
-                return initPage(driver, CategoryProductsPageBase.class);
+                return initPage(getDriver(), CategoryProductsPageBase.class);
             }
 
         }
@@ -57,7 +59,7 @@ public class HomePage extends HomePageBase {
             LOGGER.info("current subcategory: " + subcategory);
             if (subcategory.equalsIgnoreCase(currentSubCategory)) {
                 subcateg.click();
-                return initPage(driver, SubcategoryProductsPageBase.class);
+                return initPage(getDriver(), SubcategoryProductsPageBase.class);
             }
 
         }
@@ -66,7 +68,6 @@ public class HomePage extends HomePageBase {
 
     @Override
     public SearchPageBase searchProduct(String product) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchProduct'");
     }
 

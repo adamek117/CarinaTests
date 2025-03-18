@@ -10,8 +10,10 @@ import org.openqa.selenium.support.FindBy;
 import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.pages.common.SubSubcategoryProductsPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.ProductInfoPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SubSubcategoryProductsPageBase.class)
 public class SubSubcategoryProductsPage extends SubSubcategoryProductsPageBase {
     private static final Logger LOGGER = LogManager.getLogger(SubSubcategoryProductsPage.class);
 

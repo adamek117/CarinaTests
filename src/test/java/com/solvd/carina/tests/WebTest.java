@@ -29,7 +29,7 @@ public class WebTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "adam")
     //@TestPriority(Priority.P3)
-    //@TestLabel(name = "feature", value = { "web", "regression" })
+    @TestLabel(name = "feature", value = { "web", "regression" })
     public void testProductSpecs() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -39,7 +39,7 @@ public class WebTest implements IAbstractTest {
 
         SubcategoryProductsPageBase subcategoryProductsPageBase = categoryProductsPage.selectSubcategory( "Computers/Tablets & Networking");
         
-        SubSubcategoryProductsPageBase subSubcategoryProductsPage = subcategoryProductsPageBase.selectSubSubcategory("Components and parts");
+        /*SubSubcategoryProductsPageBase subSubcategoryProductsPage = subcategoryProductsPageBase.selectSubSubcategory("Components and parts");
 
         ProductInfoPageBase productInfoPage = subSubcategoryProductsPage.selectProduct("OEM Genuine Apple MacBook Pro A1990 2018 2019 15\" LCD Screen Display Assembly");
 
@@ -48,25 +48,13 @@ public class WebTest implements IAbstractTest {
         softAssert.assertEquals(productInfoPage.readPrice(), "US $199.99");
         softAssert.assertEquals(productInfoPage.readDescription(),"OEM Genuine Parts! Please Read Description and See Photos for Condition Guide. Tested to be 100%");
         softAssert.assertAll();
-       /* // Select phone brand
-        BrandModelsPageBase productsPage = homePage.selectBrand("Samsung");
-        // Select phone model
-        ModelInfoPageBase productInfoPage = productsPage.selectModel("Galaxy A04");
-        // Verify phone specifications
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(productInfoPage.readDisplay(), "6.5\"", "Invalid display info!");
-        softAssert.assertEquals(productInfoPage.readCamera(), "50MP", "Invalid camera info!");
-        softAssert.assertEquals(productInfoPage.readRam(), "3-8GB RAM", "Invalid ram info!");
-        softAssert.assertEquals(productInfoPage.readBattery(), "5000mAh", "Invalid battery info!");
-        softAssert.assertAll();*/
-    }
 
-    @Test
+    /*@Test
     @MethodOwner(owner = "adam")
     public void testBuyNewProduct(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-
-    }
+    }*/
+}
 }

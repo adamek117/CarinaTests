@@ -7,8 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.pages.common.SearchPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SearchPageBase.class)
 public class SearchPage extends SearchPageBase {
 
     @FindBy(id = "x-refine__group__3")
