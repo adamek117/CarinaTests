@@ -17,7 +17,7 @@ public class SubSubcategoryProductsPage extends SubSubcategoryProductsPageBase {
     private static final Logger LOGGER = LogManager.getLogger(SubSubcategoryProductsPage.class);
 
     //@FindBy(css = "ul.brwrvr__item-results brwrvr__item-results--list > li")
-    @FindBy(css = "h3.textual-display.bsig__title__text")
+    @FindBy(css = "h3.textual-display.bsig__title__text")  // tu trzeba zamienić prawdopodobnie na ProductItem żeby wyciągnąć cały a nie tylko jego tytuł
     private List<ExtendedWebElement> products;
 
 

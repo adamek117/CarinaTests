@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,6 +24,7 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
 
     public CategoryProductsPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
     }
 
     @Override
@@ -39,14 +39,14 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
             }
 
         }
-        throw new RuntimeException("Unable to open category: " + subcategory);
+        return null;
     }
 
     @Override
-    public SubcategoryProductsPageBase subcategoriesWithPhoto(String subcategory) {
+    public SubcategoryProductsPageBase selectSubcategoriesWithPhoto(String subcategory) {
         LOGGER.info("selecting " + subcategory + " category...");
         for (ExtendedWebElement cat : subcategoriesWithPhoto) {
-            String currentCategory = cat.getText();
+            String currentCategory = cat.getText().trim();
             LOGGER.info("current category: " + currentCategory);
             if(subcategory.equalsIgnoreCase(currentCategory)){
                 cat.click();
@@ -54,7 +54,7 @@ public class CategoryProductsPage extends CategoryProductsPageBase {
             }
 
         }
-        throw new RuntimeException("Unable to open category: " + subcategory);
+        return null;
     }
 
 }
