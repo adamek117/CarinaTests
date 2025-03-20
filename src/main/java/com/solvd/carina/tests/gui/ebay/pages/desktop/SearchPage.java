@@ -60,7 +60,7 @@ public class SearchPage extends SearchPageBase {
             LOGGER.info("current condition: " + currentCondition);
             if (currentCondition.contains(condition)) {
                 condit.click();
-                return initPage(getDriver(), SearchPageBase.class);
+                return initPage(getDriver(), SearchPageBase.class); // nie wiem czy potrzebne
             }
         }
         return null;

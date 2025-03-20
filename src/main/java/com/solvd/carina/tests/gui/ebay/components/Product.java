@@ -7,9 +7,9 @@ public enum Product {
             new String[] {}),
 
     LAPTOP_REPLACEMENT_PARTS(
-            new String[] { "OEM Genuine Apple MacBook Pro A1990 2018 2019 15\" LCD Screen Display Assembly",
+            new String[] { "OEM Genuine Macbook Pro 15\" A1707 2016 2017 LCD Display Assembly Space Gray",
                     "OEM A2141 Apple MacBook Pro 16\" LCD Screen Display Assembly 2019 Silver Gray" },
-            new String[] { "US $199.99", "US $184.99" },
+            new String[] { "US $219.99", "US $184.99" },
             new String[] {
                     "OEM Genuine Parts! Please Read Description and See Photos for Condition Guide. Tested to be 100%",
                     "OEM Genuine Parts! Various Conditions! Please read description for full details. Tested to be 100%" }),
