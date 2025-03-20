@@ -7,8 +7,11 @@ import org.openqa.selenium.support.FindBy;
 
 import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.pages.common.CartPageBase;
+import com.solvd.carina.tests.gui.ebay.pages.common.CheckoutInformationPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
     @FindBy(css = ".cart-bucket")
@@ -20,11 +23,20 @@ public class CartPage extends CartPageBase {
 
     public CartPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
     }
 
-   /*  public CheckoutInformationPage clickCheckout() {
+    @Override
+    public CartPageBase clickCheckout() {
         checkoutButton.click();
-        return new CheckoutInformationPage(getDriver());
-    }*/
+        return initPage(getDriver(), CartPageBase.class);
+    }
+
+    @Override
+    public CheckoutInformationPageBase clickGuestButtton() {
+        guestButton.click();
+        return initPage(
+                getDriver(), CheckoutInformationPageBase.class);
+    }
 
 }

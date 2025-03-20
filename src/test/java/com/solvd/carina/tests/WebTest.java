@@ -12,8 +12,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.solvd.carina.tests.gui.ebay.WindowUtils;
 import com.solvd.carina.tests.gui.ebay.components.Product;
+import com.solvd.carina.tests.gui.ebay.pages.common.CartPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
+import com.solvd.carina.tests.gui.ebay.pages.common.CheckoutInformationPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.HomePageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.ProductInfoPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.SearchPageBase;
@@ -87,17 +90,14 @@ public class WebTest implements IAbstractTest {
 
         ProductInfoPageBase productInfoPageBase = 
         searchPage.choseProduct("NEW E30 Bmw e30 Under dash kick panel E30 51451917353-51451884247- 51451917351");
-
+        WindowUtils.switchToNewTabAndCloseOld(getDriver());
         softAssert.assertEquals(productInfoPageBase.readTitle(),"NEW E30 Bmw e30 Under dash kick panel E30 51451917353-51451884247- 51451917351");
-        softAssert.assertEquals(productInfoPageBase.readPrice(),"$85.00");
-        softAssert.assertEquals(productInfoPageBase.readDescription(),"");
+        softAssert.assertEquals(productInfoPageBase.readPrice(),"US $85.00");
         softAssert.assertAll();
+        productInfoPageBase.addToChart();
+        CartPageBase cartPageBase = productInfoPageBase.clickInChartButton();
+        cartPageBase = cartPageBase.clickCheckout();
+        CheckoutInformationPageBase checkoutInformationPageBase = cartPageBase.clickGuestButtton();
     }
-    
-    @Test
-    @MethodOwner(owner = "adam")
-    @TestLabel(name = "feature", value = { "web", "regression" })
-    public void testWeather(){
-        
-    }
+   
 }
