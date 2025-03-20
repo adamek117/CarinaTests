@@ -14,7 +14,7 @@ public class ProductInfoPage extends ProductInfoPageBase {
     // private static final Logger LOGGER =
     // LogManager.getLogger(ProductInfoPage.class);
 
-    @FindBy(css = ".x-bin-price__content .ux-textspans")
+    @FindBy(css = "#mainContent > div.vim.d-vi-evo-region > div.vim.x-price-section.mar-t-20 > div.vim.x-bin-price > div > div.x-price-primary > span")
     private ExtendedWebElement displayPrice;
     @FindBy(css = ".x-item-title__mainTitle .ux-textspans.ux-textspans--BOLD")
     private ExtendedWebElement displayTitle;
@@ -22,7 +22,7 @@ public class ProductInfoPage extends ProductInfoPageBase {
     private ExtendedWebElement displayDescription;
     @FindBy(css = "#atcBtn_btn_1 > span > span")
     private ExtendedWebElement chartItem;
-    @FindBy(css ="span.ux-call-to-action__text")
+    @FindBy(xpath = "//*[@id=\"mainContent\"]/div[1]/div[7]/ul/li[2]/div[1]/div/div[2]/div[3]/div/div/div[1]/div[2]/div/div/div[2]/a/span/span")
     private ExtendedWebElement seeInChartButton;
 
     public ProductInfoPage(WebDriver driver) {
@@ -48,10 +48,10 @@ public class ProductInfoPage extends ProductInfoPageBase {
         return displayTitle.getText();
     }
 
-     @Override
+    @Override
     public CartPageBase clickInChartButton() {
-       seeInChartButton.click();
-       return initPage(getDriver(), CartPageBase.class);
+        seeInChartButton.click();
+        return initPage(getDriver(), CartPageBase.class);
     }
 
     @Override

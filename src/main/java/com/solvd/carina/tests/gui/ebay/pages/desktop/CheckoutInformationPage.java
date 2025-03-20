@@ -2,13 +2,19 @@ package com.solvd.carina.tests.gui.ebay.pages.desktop;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.solvd.carina.tests.gui.ebay.ShipData;
 import com.solvd.carina.tests.gui.ebay.pages.common.CheckoutInformationPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CheckoutInformationPageBase.class)
 public class CheckoutInformationPage extends CheckoutInformationPageBase {
+    private static final Logger LOGGER = LogManager.getLogger(CheckoutInformationPage.class);
 
     @FindBy(css = "span")
     private ExtendedWebElement itemTitle;
@@ -21,9 +27,8 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     @FindBy(css = "span.BOLD.POSITIVE")
     private ExtendedWebElement delivery;
 
-    //@FindBy(id = "country")
-    @FindBy(css = "country > option")
-    private List<ExtendedWebElement> countries;
+    @FindBy(id = "country")
+    private ExtendedWebElement countryButton;
 
     @FindBy(id = "firstName")
     private ExtendedWebElement firstName;
@@ -52,107 +57,145 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     @FindBy(id = "emailConfirm")
     private ExtendedWebElement emailConfirm;
 
-    @FindBy(css = "#phoneCountryCode > span > span.btn__text > span > span.custom-phone-field__dial-code")
-    private ExtendedWebElement phoneCountryCode;
+    @FindBy(id = "phoneCountryCode")
+    private ExtendedWebElement countryCodeButton;
+
+    @FindBy(id = "phoneCountryCode")
+    private ExtendedWebElement phoneCountryCodes;
 
     @FindBy(id = "phoneNumber")
     private ExtendedWebElement phoneNumber;
 
-    @FindBy(css = "button.btn.btn--primary")
+    @FindBy(css = "#mainContent > div.two-column.container.no-gutters > div > div.left-column.col-7.col-lg-8 > section.module.shipping-address.auto-address-container > div > div > div > div > div.address-form > div > form > div > div > div > button")
     private ExtendedWebElement doneButton;
 
-    @FindBy(css = "div.render-summary--primary")
+    @FindBy(id = "payment-selection-fieldset")
     private List<ExtendedWebElement> paymentMethods;
 
     @FindBy(css = "#page-form > div > button")
     private ExtendedWebElement confirmButton;
+    @FindBy(css = "#mainContent > div.currency-dialog > div > div > div.lightbox-dialog__window.lightbox-dialog__window--fade.keyboard-trap--active > div.lightbox-dialog__main > div.currency-footer > div > button.btn.currency-cta-container__primary.btn--primary")
+    private ExtendedWebElement continueSelectPaymet;
 
     public CheckoutInformationPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
+    }
+
+    @Override
+    public void fillShipInformations(String country, String firstName, String lastName, String addreess,
+            String optionalAddreess, String city, String state, String ZIPCode, String email, String emailConfirm,
+            String countryCode, String phoneNumber) {
+        chooseCountry(country);
+        insertFirstName(firstName);
+        insertLastName(lastName);
+        insertStreetAddress(addreess);
+        insertOptionalStreetAddress(optionalAddreess);
+        insertCity(city);
+        chooseState(state);
+        insertZIPCode(ZIPCode);
+        insertEmail(email);
+        insertConfirmEmail(emailConfirm);
+        chooseCountryCode(countryCode);
+        insertPhoneNumber(phoneNumber);
 
     }
 
     @Override
-    public void chooseCountry(String country) {
-        
-    }
+    public void fillShipInformations(ShipData shipData) {
+        chooseCountry(shipData.getCountry());
+        insertFirstName(shipData.getFirstName());
+        insertLastName(shipData.getLastName());
+        insertStreetAddress(shipData.getAddress());
+        insertOptionalStreetAddress(shipData.getOptionalAddress());
+        insertCity(shipData.getCity());
+        chooseState(shipData.getState());
+        insertZIPCode(shipData.getZipCode());
+        insertEmail(shipData.getEmail());
+        insertConfirmEmail(shipData.getEmailConfirm());
+        // chooseCountryCode(shipData.getCountryCode());
+        insertPhoneNumber(shipData.getPhoneNumber());
 
-    @Override
-    public void insertFirstName(String firstName) {
-        this.firstName.click();
-        this.firstName.type(firstName);
-    }
-
-    @Override
-    public void insertLastName(String lastName) {
-        this.lastName.click();
-        this.lastName.type(lastName);
-    }
-
-    @Override
-    public void insertStreetAddress(String addreess) {
-        this.streetAddres.click();
-        this.streetAddres.type(addreess);
-    }
-
-    @Override
-    public void insertOptionalStreetAddress(String address) {
-        this.streetAddres2.click();
-        this.streetAddres2.type(address);
-    }
-
-    @Override
-    public void insertCity(String city) {
-       this.city.click();
-       this.city.type(city);
-    }
-
-    @Override
-    public void chooseState(String state) {
-       this.stateOrProvince.click();
-       this.stateOrProvince.type(state);
-    }
-
-    @Override
-    public void insertZIPCode(String ZIPCode) {
-        this.postalCode.click();
-        this.postalCode.type(ZIPCode);
-    }
-
-    @Override
-    public void insertEmail(String email) {
-       this.email.click();
-       this.email.type(email);
-    }
-
-    @Override
-    public void insertConfirmEmail(String email) {
-       this.emailConfirm.click();
-       this.emailConfirm.type(email);
-    }
-
-    @Override
-    public void chooseCountryCode(String countryCode) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chooseCountryCode'");
-    }
-
-    @Override
-    public void insertPhoneNumber(String phoneNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertPhoneNumber'");
     }
 
     @Override
     public void clickDoneButton() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clickDoneButton'");
+        this.doneButton.click();
     }
 
     @Override
-    public void choosePaymentMethod() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'choosePaymentMethod'");
+    public void choosePaymentMethod(String paymentMethod) {
+        for (ExtendedWebElement paymentMethodElement : paymentMethods) {
+            String currentPaymentMethod = paymentMethodElement.getText();
+            if (currentPaymentMethod.equalsIgnoreCase(paymentMethod)) {
+                LOGGER.info("Metoda płatności:", currentPaymentMethod);
+                paymentMethodElement.click();
+                continueSelectPaymet.click();
+            }
+        }
+    }
+
+    @Override
+    public String getCity() {
+        assertElementPresent(city);
+        return city.getAttribute("value");
+    }
+
+    private void chooseCountry(String country) {
+        this.countryButton.select(country);
+    }
+
+    private void insertFirstName(String firstName) {
+        this.firstName.click();
+        this.firstName.type(firstName);
+    }
+
+    private void insertLastName(String lastName) {
+        this.lastName.click();
+        this.lastName.type(lastName);
+    }
+
+    private void insertStreetAddress(String addreess) {
+        this.streetAddres.click();
+        this.streetAddres.type(addreess);
+    }
+
+    private void insertOptionalStreetAddress(String address) {
+        this.streetAddres2.click();
+        this.streetAddres2.type(address);
+    }
+
+    private void insertCity(String city) {
+        this.city.click();
+        this.city.type(city);
+    }
+
+    private void chooseState(String state) {
+        this.stateOrProvince.select(state);
+    }
+
+    private void insertZIPCode(String ZIPCode) {
+        this.postalCode.click();
+        this.postalCode.type(ZIPCode);
+    }
+
+    private void insertEmail(String email) {
+        this.email.click();
+        this.email.type(email);
+    }
+
+    private void insertConfirmEmail(String email) {
+        this.emailConfirm.click();
+        this.emailConfirm.type(email);
+    }
+
+    private void chooseCountryCode(String countryCode) {
+        this.countryButton.select(countryCode);
+    }
+
+    private void insertPhoneNumber(String phoneNumber) {
+        this.phoneNumber.click();
+        this.phoneNumber.type(phoneNumber);
     }
 
 }

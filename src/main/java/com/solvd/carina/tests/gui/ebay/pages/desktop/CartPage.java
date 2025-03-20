@@ -20,7 +20,7 @@ public class CartPage extends CartPageBase {
     private ExtendedWebElement checkoutButton;
     @FindBy(id = "gxo-btn")
     private ExtendedWebElement guestButton;
-
+    
     public CartPage(WebDriver driver) {
         super(driver);
         waitForJSToLoad();
@@ -29,7 +29,7 @@ public class CartPage extends CartPageBase {
     @Override
     public CartPageBase clickCheckout() {
         checkoutButton.click();
-        return initPage(getDriver(), CartPageBase.class);
+        return initPage(getDriver(), CartPageBase.class); // czy to potrzebne?
     }
 
     @Override
