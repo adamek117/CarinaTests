@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.ebay;
+package com.solvd.carina.tests.gui.ebay.enums;
 
 public enum ShipData {
     SHIPDATA1("United States", "John", "Doe", "123 Main St", "Apt 4B", 

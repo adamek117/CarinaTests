@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.yahoo.pages;
+package com.solvd.carina.tests.gui.yahoo.enums;
 
 public enum WeatherForecast {
     THURSDAY("Thursday", "", "75%", "75°F",

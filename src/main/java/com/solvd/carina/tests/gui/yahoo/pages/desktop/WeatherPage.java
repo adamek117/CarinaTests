@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.yahoo.pages;
+package com.solvd.carina.tests.gui.yahoo.pages.desktop;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import com.solvd.carina.tests.gui.yahoo.pages.common.WeatherPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
@@ -21,7 +23,6 @@ public class WeatherPage extends WeatherPageBase {
     private static final Logger LOGGER = LogManager.getLogger(WeatherPageBase.class);
 
     @FindBy(css = "#module-weather-popular-locations > ul > li > a")
-
     private List<ExtendedWebElement> cities;
 
     @FindBy(css = "#module-location-heading > div.M(10px) > div > div:nth-child(1) > h1")
@@ -62,6 +63,7 @@ public class WeatherPage extends WeatherPageBase {
 
     public WeatherPage(WebDriver driver) {
         super(driver);
+        waitForJSToLoad();
 
     }
 
@@ -90,6 +92,12 @@ public class WeatherPage extends WeatherPageBase {
             fahrenheit.click();
         }
 
+    }
+
+    @Override
+    public String getCurrentCityName(){
+        assertElementPresent(currentCityName);
+        return currentCityName.getText();
     }
 
     @Override
@@ -122,6 +130,7 @@ public class WeatherPage extends WeatherPageBase {
         for (int i = 0; i < rowCount; i++) {
             Map<String, String> forecastData = new HashMap<>();
             forecastData.put("day", days.get(i).getText());
+            forecastData.put("precipitation", percetangesOfPrecitipation.get(i).getText());
             if (getActiveTemperatureUnit(getDriver()) == "Celsius") {
                 highTemperatureCelsius.get(i).waitUntil(ExpectedConditions.visibilityOf(highTemperatureCelsius.get(i)),
                         Duration.ofSeconds(10));

@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.ebay;
+package com.solvd.carina.tests.gui.ebay.enums;
 
 public enum BuyingFormat {
     BUY_IT_NOW("Buy It Now"),
@@ -10,6 +10,10 @@ public enum BuyingFormat {
 
     private BuyingFormat(String formatName) {
         this.formatName = formatName;
+    }
+
+    public String getFormatName(){
+        return formatName;
     }
 
 }

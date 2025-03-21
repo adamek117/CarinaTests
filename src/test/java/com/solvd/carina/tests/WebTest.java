@@ -8,9 +8,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.solvd.carina.tests.gui.ebay.ShipData;
 import com.solvd.carina.tests.gui.ebay.WindowUtils;
 import com.solvd.carina.tests.gui.ebay.components.Product;
+import com.solvd.carina.tests.gui.ebay.enums.ShipData;
 import com.solvd.carina.tests.gui.ebay.pages.common.CartPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CheckoutInformationPageBase;
