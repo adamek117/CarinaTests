@@ -78,6 +78,6 @@ public class SearchPage extends SearchPageBase {
                 return initPage(getDriver(), ProductInfoPageBase.class);
             }
         }
-        throw new RuntimeException("No chosen product");
+        return null;
     }
 }

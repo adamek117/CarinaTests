@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.ebay;
+package com.solvd.carina.tests.gui.ebay.enums;
 
 public enum Condtition {
     NEW("New"),
@@ -10,5 +10,8 @@ public enum Condtition {
     private Condtition(String conditionName) {
         this.conditionName = conditionName;
     }
-
+    
+    public String getConditionName(){
+        return conditionName;
+    }
 }

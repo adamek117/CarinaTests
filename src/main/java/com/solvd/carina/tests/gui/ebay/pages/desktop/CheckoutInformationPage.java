@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.solvd.carina.tests.gui.ebay.ShipData;
+import com.solvd.carina.tests.gui.ebay.enums.ShipData;
 import com.solvd.carina.tests.gui.ebay.pages.common.CheckoutInformationPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

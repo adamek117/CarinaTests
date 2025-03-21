@@ -2,12 +2,10 @@ package com.solvd.carina.tests.gui.ebay.pages.common;
 
 import org.openqa.selenium.WebDriver;
 
-import com.solvd.carina.tests.gui.ebay.ShipData;
+import com.solvd.carina.tests.gui.ebay.enums.ShipData;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-import lombok.Getter;
 
-@Getter
 public abstract class CheckoutInformationPageBase extends AbstractPage {
 
     public CheckoutInformationPageBase(WebDriver driver) {
