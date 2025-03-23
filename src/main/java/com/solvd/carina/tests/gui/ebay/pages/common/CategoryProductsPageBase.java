@@ -13,5 +13,4 @@ public abstract class CategoryProductsPageBase extends AbstractPage {
     public abstract SubcategoryProductsPageBase selectSubcategory(String subcategory);
 
     public abstract SubcategoryProductsPageBase selectSubcategoriesWithPhoto(String subcategory);
-    // public abstract List getCategory();
 }

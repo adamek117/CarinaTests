@@ -1,6 +1,5 @@
 package com.solvd.carina.tests.gui.ebay.pages.desktop;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,8 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.solvd.carina.tests.gui.ebay.WindowUtils;
 import com.solvd.carina.tests.gui.ebay.pages.common.ProductInfoPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.SearchPageBase;
 
@@ -20,9 +19,6 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 public class SearchPage extends SearchPageBase {
     private static final Logger LOGGER = LogManager.getLogger(SearchPage.class);
 
-    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-    // css = "#x-refine__group__3 > ul > li > div > a > div > div > div >
-    // span.cbx.x-refine__multi-select-cbx")
     @FindBy(css = "#x-refine__group__3 > ul > li > div > a > div > div > div > span.cbx.x-refine__multi-select-cbx")
     private List<ExtendedWebElement> conditions;
     @FindBy(css = "#x-refine__group__4 > ul > li > div > a > div > div > span.cbx.x-refine__multi-select-cbx")
@@ -30,6 +26,7 @@ public class SearchPage extends SearchPageBase {
     @FindBy(css = "div.s-item__info.clearfix > a > div > span")
     private List<ExtendedWebElement> searchedItems;
     //*[@id="item2b7a309fb6"]/div/div[2]/a/div/span
+    
     public SearchPage(WebDriver driver) {
         super(driver);
         waitForJSToLoad();
@@ -70,11 +67,12 @@ public class SearchPage extends SearchPageBase {
     public ProductInfoPageBase choseProduct(String productName) {
         LOGGER.info("selecting " + productName + " product...");
         for (ExtendedWebElement item : searchedItems) {
-            waitUntil(ExpectedConditions.visibilityOf(item), 5);
+            waitUntil(ExpectedConditions.visibilityOf(item), 15);
             LOGGER.info("selecting " + item.getText() + " item...");
             String currentItem = item.getText().trim();
             if (productName.equalsIgnoreCase(currentItem)) {
                 item.click();
+                WindowUtils.switchToNewTabAndCloseOld(getDriver());
                 return initPage(getDriver(), ProductInfoPageBase.class);
             }
         }

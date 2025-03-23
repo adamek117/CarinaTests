@@ -25,9 +25,9 @@ public class WeatherPage extends WeatherPageBase {
     @FindBy(css = "#module-weather-popular-locations > ul > li > a")
     private List<ExtendedWebElement> cities;
 
-    @FindBy(css = "#module-location-heading > div.M(10px) > div > div:nth-child(1) > h1")
+    @FindBy(css = "#module-location-heading > div.M\\(10px\\) > div > div> h1")
     private ExtendedWebElement currentCityName;
-
+    
     @FindBy(id = "module-weather-forecast")
     private ExtendedWebElement forecastFrame;
 
@@ -37,7 +37,7 @@ public class WeatherPage extends WeatherPageBase {
     @FindBy(id = "fahrenheit")
     private ExtendedWebElement fahrenheit;
 
-    @FindBy(css = "#module-weather-forecast > table > tbody > tr > td:nth-child(1) > button")
+    @FindBy(xpath = "//*[@id=\"module-weather-forecast\"]/table/tbody/tr/td[1]")
     private List<ExtendedWebElement> days;
 
     @FindBy(css = "#module-weather-forecast > table > tbody > tr > td.Ta(c).W(25%) > img")
@@ -46,7 +46,7 @@ public class WeatherPage extends WeatherPageBase {
     @FindBy(css = "#module-weather-forecast > table > tbody > tr > td.W(25%).Fz(0.75rem).D(f).Jc(c) > img")
     private List<ExtendedWebElement> imagesOfPrecitipation;
 
-    @FindBy(css = "#module-weather-forecast > table > tbody > tr > td.W\\(25\\%\\).Fz\\(0\\.75rem\\)\\.D\\(f\\)\\.Jc\\(c\\) > dl > dd")
+    @FindBy(css = "#module-weather-forecast > table > tbody > tr> td.W\\(25\\%\\).Fz\\(0\\.75rem\\).D\\(f\\).Jc\\(c\\) > dl > dd")
     private List<ExtendedWebElement> percetangesOfPrecitipation;
 
     @FindBy(css = "#module-weather-forecast > table > tbody > tr> td.W\\(25\\%\\).D\\(f\\).Jc\\(fe\\).Ta\\(end\\) > dl > dd:nth-child(2)")
@@ -55,7 +55,7 @@ public class WeatherPage extends WeatherPageBase {
     @FindBy(css = "#module-weather-forecast > table > tbody > tr > td.W\\(25\\%\\).D\\(f\\).Jc\\(fe\\).Ta\\(end\\) > dl > dd:nth-child(4)")
     private List<ExtendedWebElement> highTemperatureCelsius;
 
-    @FindBy(css = "#module-weather-forecast > table > tbody > tr> td.W\\(25\\%\\).D\\(f\\).Jc\\(fe\\).Ta\\(end\\) > dl > dd.Pstart\\(10px\\).C\\(\\$lowTemperatureColor\\).D\\(b\\).celsius_D\\(n\\).W\\(25px\\")
+    @FindBy(css = "#module-weather-forecast > table > tbody > tr > td.W\\(25\\%\\).D\\(f\\).Jc\\(fe\\).Ta\\(end\\) > dl > dd.Pstart\\(10px\\).C\\(\\$lowTemperatureColor\\).D\\(b\\).celsius_D\\(n\\).W\\(25px\\)")
     private List<ExtendedWebElement> lowTemperatureFahrenheit;
 
     @FindBy(css = "#module-weather-forecast > table > tbody > tr> td.W\\(25\\%\\).D\\(f\\).Jc\\(fe\\).Ta\\(end\\) > dl > dd.Pstart\\(10px\\).C\\(\\$lowTemperatureColor\\).D\\(n\\).celsius_D\\(b\\).W\\(25px\\)")
@@ -87,6 +87,7 @@ public class WeatherPage extends WeatherPageBase {
     @Override
     public void chooseTemperatureType(String type) {
         if (type.equals(celsius.getText())) {
+            LOGGER.info("current type: " + type);
             celsius.click();
         } else {
             fahrenheit.click();
@@ -95,25 +96,14 @@ public class WeatherPage extends WeatherPageBase {
     }
 
     @Override
-    public String getCurrentCityName(){
+    public String getCurrentCityName() {
         assertElementPresent(currentCityName);
         return currentCityName.getText();
     }
 
     @Override
     public String getActiveTemperatureUnit() {
-        if ("true".equals(celsius.getAttribute("aria-selected")) || celsius.getAttribute("class").contains("active")) {
-            return "Celsius";
-        } else if ("true".equals(fahrenheit.getAttribute("aria-selected"))
-                || fahrenheit.getAttribute("class").contains("active")) {
-            return "Fahrenheit";
-        }
-        return "None is active";
-    }
-
-    @Override
-    public String getActiveTemperatureUnit(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         WebElement activeElement = (WebElement) js.executeScript("return document.activeElement;");
 
         if (activeElement.equals(celsius.getElement())) {
@@ -129,27 +119,28 @@ public class WeatherPage extends WeatherPageBase {
         Integer rowCount = days.size() - 1;
         for (int i = 0; i < rowCount; i++) {
             Map<String, String> forecastData = new HashMap<>();
-            forecastData.put("day", days.get(i).getText());
+            forecastData.put("day", days.get(i).getText().substring(21));
+            System.out.println(days.get(i).getText().substring(21));
             forecastData.put("precipitation", percetangesOfPrecitipation.get(i).getText());
-            if (getActiveTemperatureUnit(getDriver()) == "Celsius") {
+            if (getActiveTemperatureUnit().equals("Celsius")) {
                 highTemperatureCelsius.get(i).waitUntil(ExpectedConditions.visibilityOf(highTemperatureCelsius.get(i)),
                         Duration.ofSeconds(10));
-                forecastData.put("highTemperatureCelsius", highTemperatureCelsius.get(i).getText());
+                forecastData.put("celsiusHighTemp", highTemperatureCelsius.get(i).getText());
                 lowTemperatureCelsius.get(i).waitUntil(ExpectedConditions.visibilityOf(lowTemperatureCelsius.get(i)),
                         Duration.ofSeconds(10));
-                forecastData.put("lowTemperatureCelsius", lowTemperatureCelsius.get(i).getText());
+                forecastData.put("celsiusLowTemp", lowTemperatureCelsius.get(i).getText());
                 allForecastData.add(forecastData);
             } else {
                 highTemperatureFahrenheit.get(i).waitUntil(
                         ExpectedConditions.visibilityOf(highTemperatureFahrenheit.get(i)),
                         Duration.ofSeconds(10));
-                forecastData.put("highTemperatureCelsius", highTemperatureCelsius.get(i).getText());
-                highTemperatureFahrenheit.get(i).waitUntil(
-                        ExpectedConditions.visibilityOf(lowTemperatureCelsius.get(i)),
+                forecastData.put("fahrenheitHighTemp", highTemperatureFahrenheit.get(i).getText());
+                lowTemperatureFahrenheit.get(i).waitUntil(
+                        ExpectedConditions.visibilityOf(lowTemperatureFahrenheit.get(i)),
                         Duration.ofSeconds(10));
-                forecastData.put("lowTemperatureCelsius", highTemperatureFahrenheit.get(i).getText());
+                forecastData.put("fahrenheitLowTemp", highTemperatureFahrenheit.get(i).getText());
+                allForecastData.add(forecastData);
             }
-            allForecastData.add(forecastData);
         }
         return allForecastData;
 

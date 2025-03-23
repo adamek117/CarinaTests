@@ -17,8 +17,7 @@ public abstract class WeatherPageBase extends AbstractPage {
     public abstract void chooseCity(String cityName);
     public abstract boolean isForecastFrameVisible();
     public abstract void chooseTemperatureType(String type);
-    public abstract String getActiveTemperatureUnit(WebDriver driver);
+    public abstract String getActiveTemperatureUnit();
     public abstract List<Map<String, String>> getForecastData();
     public abstract String getCurrentCityName();
-    public abstract String getActiveTemperatureUnit();
 }

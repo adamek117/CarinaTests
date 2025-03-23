@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.ebay.components;
+package com.solvd.carina.tests.gui.ebay.enums;
 
 public enum Product {
     GPUS(

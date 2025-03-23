@@ -1,13 +1,13 @@
 package com.solvd.carina.tests.gui.ebay.enums;
 
-public enum Condtition {
+public enum Condition {
     NEW("New"),
     USED("Used"),
     NOT_SPECIFIED("Not Specified");
 
     private final String conditionName;
 
-    private Condtition(String conditionName) {
+    private Condition(String conditionName) {
         this.conditionName = conditionName;
     }
     

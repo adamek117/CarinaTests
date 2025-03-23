@@ -24,7 +24,7 @@ public enum ShipData {
     private final String countryCode;
     private final String phoneNumber;
 
-    ShipData(String country, String firstName, String lastName, String address, String optionalAddress, String city,
+    private ShipData(String country, String firstName, String lastName, String address, String optionalAddress, String city,
             String state,
             String zipCode, String email, String emailConfirm, String countryCode, String phoneNumber) {
         this.country = country;

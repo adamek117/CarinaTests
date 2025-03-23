@@ -12,10 +12,6 @@ public abstract class CheckoutInformationPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void fillShipInformations(String country, String firstName, String lastName, String addreess,
-            String optionalAddreess, String city, String state, String ZIPCode, String email, String emailConfirm,
-            String countryCode, String phoneNumber);
-
     public abstract void fillShipInformations(ShipData shipData);
 
     public abstract void clickDoneButton();

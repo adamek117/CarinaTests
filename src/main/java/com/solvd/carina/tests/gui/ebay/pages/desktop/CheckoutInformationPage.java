@@ -22,7 +22,7 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     @FindBy(css = "span.item-price")
     private ExtendedWebElement itemPrice;
 
-    private ExtendedWebElement itemDescription;
+    private ExtendedWebElement itemDescription; // add css 
 
     @FindBy(css = "span.BOLD.POSITIVE")
     private ExtendedWebElement delivery;
@@ -31,31 +31,31 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     private ExtendedWebElement countryButton;
 
     @FindBy(id = "firstName")
-    private ExtendedWebElement firstName;
+    private ExtendedWebElement firstNameInput;
 
     @FindBy(id = "lastName")
-    private ExtendedWebElement lastName;
+    private ExtendedWebElement lastNameInput;
 
     @FindBy(id = "addressLine1")
-    private ExtendedWebElement streetAddres;
+    private ExtendedWebElement streetAddresInput;
 
     @FindBy(id = "addressLine2")
-    private ExtendedWebElement streetAddres2;
+    private ExtendedWebElement streetAddresInput2;
 
     @FindBy(id = "city")
-    private ExtendedWebElement city;
+    private ExtendedWebElement cityInput;
 
     @FindBy(id = "stateOrProvince")
-    private ExtendedWebElement stateOrProvince;
+    private ExtendedWebElement stateOrProvinceSelect;
 
     @FindBy(id = "postalCode")
-    private ExtendedWebElement postalCode;
+    private ExtendedWebElement postalCodeInput;
 
     @FindBy(id = "email")
-    private ExtendedWebElement email;
+    private ExtendedWebElement emailInput;
 
     @FindBy(id = "emailConfirm")
-    private ExtendedWebElement emailConfirm;
+    private ExtendedWebElement emailConfirmInput;
 
     @FindBy(id = "phoneCountryCode")
     private ExtendedWebElement countryCodeButton;
@@ -64,7 +64,7 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     private ExtendedWebElement phoneCountryCodes;
 
     @FindBy(id = "phoneNumber")
-    private ExtendedWebElement phoneNumber;
+    private ExtendedWebElement phoneNumberInput;
 
     @FindBy(css = "#mainContent > div.two-column.container.no-gutters > div > div.left-column.col-7.col-lg-8 > section.module.shipping-address.auto-address-container > div > div > div > div > div.address-form > div > form > div > div > div > button")
     private ExtendedWebElement doneButton;
@@ -82,38 +82,19 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
         waitForJSToLoad();
     }
 
-    @Override
-    public void fillShipInformations(String country, String firstName, String lastName, String addreess,
-            String optionalAddreess, String city, String state, String ZIPCode, String email, String emailConfirm,
-            String countryCode, String phoneNumber) {
-        chooseCountry(country);
-        insertFirstName(firstName);
-        insertLastName(lastName);
-        insertStreetAddress(addreess);
-        insertOptionalStreetAddress(optionalAddreess);
-        insertCity(city);
-        chooseState(state);
-        insertZIPCode(ZIPCode);
-        insertEmail(email);
-        insertConfirmEmail(emailConfirm);
-        chooseCountryCode(countryCode);
-        insertPhoneNumber(phoneNumber);
-
-    }
 
     @Override
     public void fillShipInformations(ShipData shipData) {
         chooseCountry(shipData.getCountry());
         insertFirstName(shipData.getFirstName());
-        insertLastName(shipData.getLastName());
-        insertStreetAddress(shipData.getAddress());
-        insertOptionalStreetAddress(shipData.getOptionalAddress());
+        insertlastName(shipData.getLastName());
+        insertStreetAddres(shipData.getAddress());
+        insertOptionalStreetAddres(shipData.getOptionalAddress());
         insertCity(shipData.getCity());
-        chooseState(shipData.getState());
+        selectState(shipData.getState());
         insertZIPCode(shipData.getZipCode());
         insertEmail(shipData.getEmail());
         insertConfirmEmail(shipData.getEmailConfirm());
-        // chooseCountryCode(shipData.getCountryCode());
         insertPhoneNumber(shipData.getPhoneNumber());
 
     }
@@ -137,8 +118,8 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
 
     @Override
     public String getCity() {
-        assertElementPresent(city);
-        return city.getAttribute("value");
+        assertElementPresent(cityInput);
+        return cityInput.getAttribute("value");
     }
 
     private void chooseCountry(String country) {
@@ -146,56 +127,52 @@ public class CheckoutInformationPage extends CheckoutInformationPageBase {
     }
 
     private void insertFirstName(String firstName) {
-        this.firstName.click();
-        this.firstName.type(firstName);
+        firstNameInput.click();
+        firstNameInput.type(firstName);
     }
 
-    private void insertLastName(String lastName) {
-        this.lastName.click();
-        this.lastName.type(lastName);
+    private void insertlastName(String lastName) {
+        lastNameInput.click();
+        lastNameInput.type(lastName);
     }
 
-    private void insertStreetAddress(String addreess) {
-        this.streetAddres.click();
-        this.streetAddres.type(addreess);
+    private void insertStreetAddres(String addreess) {
+        streetAddresInput.click();
+        streetAddresInput.type(addreess);
     }
 
-    private void insertOptionalStreetAddress(String address) {
-        this.streetAddres2.click();
-        this.streetAddres2.type(address);
+    private void insertOptionalStreetAddres(String address) {
+        streetAddresInput2.click();
+        streetAddresInput2.type(address);
     }
 
     private void insertCity(String city) {
-        this.city.click();
-        this.city.type(city);
+        cityInput.click();
+        cityInput.type(city);
     }
 
-    private void chooseState(String state) {
-        this.stateOrProvince.select(state);
+    private void selectState(String state) {
+        stateOrProvinceSelect.select(state);
     }
 
     private void insertZIPCode(String ZIPCode) {
-        this.postalCode.click();
-        this.postalCode.type(ZIPCode);
+        postalCodeInput.click();
+        postalCodeInput.type(ZIPCode);
     }
 
     private void insertEmail(String email) {
-        this.email.click();
-        this.email.type(email);
+        emailInput.click();
+        emailInput.type(email);
     }
 
     private void insertConfirmEmail(String email) {
-        this.emailConfirm.click();
-        this.emailConfirm.type(email);
-    }
-
-    private void chooseCountryCode(String countryCode) {
-        this.countryButton.select(countryCode);
+        emailConfirmInput.click();
+        emailConfirmInput.type(email);
     }
 
     private void insertPhoneNumber(String phoneNumber) {
-        this.phoneNumber.click();
-        this.phoneNumber.type(phoneNumber);
+        phoneNumberInput.click();
+        phoneNumberInput.type(phoneNumber);
     }
 
 }

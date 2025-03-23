@@ -19,14 +19,12 @@ public class HomePage extends HomePageBase {
 
     @FindBy(css = "#ybar-l1-nav > li > button > span")
     private ExtendedWebElement moreCategory;
-
-   
-
+    
     @FindBy(xpath = "//*[@id='grid-layout']/div[2]/a")
     private ExtendedWebElement seeWeatherDetails;
 
-    //@FindBy(css = "#ybar-l1-more-menu > ul > li> ul > li > a")
-    @FindBy(css = "#ybar-l1-more-menu > ul > li:nth-child(4) > ul > li > a")
+    //@FindBy(css = "#ybar-l1-more-menu > ul > li> ul > li > a") // general subCategories
+    @FindBy(css = "#ybar-l1-more-menu > ul > li:nth-child(4) > ul > li > a")  // Finance subCategories
     private List<ExtendedWebElement> subCategories;
 
     public HomePage(WebDriver driver) {
