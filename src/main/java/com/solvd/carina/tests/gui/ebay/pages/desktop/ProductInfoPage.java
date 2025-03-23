@@ -38,8 +38,12 @@ public class ProductInfoPage extends ProductInfoPageBase {
 
     @Override
     public String readDescription() {
-        assertElementPresent(displayDescription);
-        return displayDescription.getText();
+        if (displayDescription.isDisplayed()) {
+            assertElementPresent(displayDescription);
+            return displayDescription.getText();
+        } else {
+            return null;
+        }
     }
 
     @Override

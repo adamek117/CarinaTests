@@ -70,13 +70,6 @@ public class WebYahooTests implements IAbstractTest {
             assertEquals(expected.get("highTemperature"), actual.get("highTemperature"));
             assertEquals(expected.get("lowTemperature"), actual.get("lowTemperature"));
         }
-
-        /*
-         * weatherPage.chooseTemperatureType("C");
-         * Assert.assertEquals(activeUnit,"Celsius","Active unit wrong understanded");
-         */
-        // System.out.println("Active Temperature Unit: " + activeUnit);
-
     }
 
     @Test
