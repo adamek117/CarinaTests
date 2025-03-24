@@ -10,11 +10,11 @@ import com.zebrunner.carina.utils.R;
 
 import static org.testng.Assert.assertEquals;
 
-public class CryptoTest implements IAbstractTest {
-
+public class CryptoTests implements IAbstractTest {
+    
     private static CryptoTool cryptoToolConfig(String algorithm, String key) {
         CryptoTool cryptoTool = CryptoToolBuilder.builder()
-                .chooseAlgorithm(Algorithm.valueOf(algorithm))
+                .chooseAlgorithm(Algorithm.AES_ECB_PKCS5_PADDING)
                 .setKey(key)
                 .build();
 

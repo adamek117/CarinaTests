@@ -6,7 +6,6 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-
 public abstract class HomePageBase extends AbstractPage {
     private ExtendedWebElement acceptCokkies;
 
@@ -16,11 +15,17 @@ public abstract class HomePageBase extends AbstractPage {
     }
 
     public abstract CategoryProductsPageBase selectCategory(String category);
-   // public abstract SubcategoryProductsPageBase selectSubcategory(String subcategory);
+
+    // public abstract SubcategoryProductsPageBase selectSubcategory(String
+    // subcategory);
     public abstract SearchPageBase searchProduct(String product);
-    
+
+    public abstract void chooseLanguagePage();
+
+    public abstract String getWelcomeText();
+
     @Override
-    public void open(){
+    public void open() {
         super.open();
         acceptCokkies.clickIfPresent(3);
     }
