@@ -29,7 +29,6 @@ public class CartPage extends CartPageBase {
     @Override
     public void clickCheckout() {
         checkoutButton.click();
-        //return initPage(getDriver(), CartPageBase.class); // czy to potrzebne?
     }
 
     @Override

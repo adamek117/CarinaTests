@@ -1,27 +1,27 @@
 package com.solvd.carina.tests.gui.yahoo.enums;
 
 public enum WeatherForecast {
-    THURSDAY(1, "Thursday", "", "75%", "75°F",
+    DAY1(1, "Thursday", "", "75%", "75°F",
             "24°C", "40°F", "4°C"),
-    FRIDAY(2, "Friday", "", "0%", "56°F", "13°C",
+    DAY2(2, "Friday", "", "0%", "56°F", "13°C",
             "40°F", "4°C"),
-    SATURDAY(3, "Saturday", "", "40%", "59°F",
+    DAY3(3, "Saturday", "", "40%", "59°F",
             "15°C", "32°F", "0°C"),
-    SUNDAY(4, "Sunday", "", "11%", "51°F",
+    DAY4(4, "Sunday", "", "11%", "51°F",
             "10°C", "41°F", "5°C"),
-    MONDAY(5, "Monday", "", "66%", "57°F",
+    DAY5(5, "Monday", "", "66%", "57°F",
             "14°C", "43°F", "6°C"),
-    TUESDAY(6, "Tuesday", "", "66%", "54°F",
+    DAY6(6, "Tuesday", "", "66%", "54°F",
             "12°C", "40°F", "4°C"),
-    WEDNESDAY(7, "Wednesday", "", "25%", "51°F",
+    DAY7(7, "Wednesday", "", "25%", "51°F",
             "10°C", "36°F", "2°C"),
-    NEXT_THURSDAY(8, "Thursday", "", "0%", "49°F",
+    DAY8(8, "Thursday", "", "0%", "49°F",
             "9°C", "37°F", "3°C"),
-    NEXT_FRIDAY(9, "Friday", "S", "60%", "50°F",
+    DAY9(9, "Friday", "S", "60%", "50°F",
             "10°C", "38°F", "3°C"),
-    NEXT_SATURDAY(10, "Saturday", "", "0%", "51°F",
+    DAY10(10, "Saturday", "", "0%", "51°F",
             "10°C", "38°F", "3°C"),
-    NEXT_SUNDAY(11, "Sunday", "", "58%", "48°F",
+    DAY11(11, "Sunday", "", "58%", "48°F",
             "9°C", "37°F", "3°C");
 
     private final Integer index;

@@ -17,8 +17,6 @@ public class App {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         String a = generateKey();
         String b = encryptData("adam", a);
-        System.out.println(a);
-        System.out.println(b);
     }
 
     public static String generateKey() throws NoSuchAlgorithmException {

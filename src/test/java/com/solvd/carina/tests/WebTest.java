@@ -4,13 +4,12 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static com.solvd.carina.tests.intefaces.TestData.EbayTestData.*;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.solvd.carina.tests.gui.ebay.enums.BuyingFormat;
-import com.solvd.carina.tests.gui.ebay.enums.ShipData;
-import com.solvd.carina.tests.gui.ebay.enums.Condition;
 import com.solvd.carina.tests.gui.ebay.enums.Product;
 import com.solvd.carina.tests.gui.ebay.pages.common.CartPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
@@ -28,7 +27,6 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 public class WebTest implements IAbstractTest {
         @Test
         @MethodOwner(owner = "adam")
-        // @TestPriority(Priority.P3)
         @TestLabel(name = "feature", value = { "web", "regression" })
         public void testProductSpecs() {
 
@@ -36,11 +34,11 @@ public class WebTest implements IAbstractTest {
                 homePage.open();
                 assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-                CategoryProductsPageBase categoryProductsPage = homePage.selectCategory("Electronics");
+                CategoryProductsPageBase categoryProductsPage = homePage.selectCategory(CATEGORY);
                 SubcategoryProductsPageBase subcategoryProductsPageBase = categoryProductsPage
-                                .selectSubcategory("Computers/Tablets & Networking");
+                                .selectSubcategory(SUBCATEGORY);
                 SubSubcategoryProductsPageBase subSubcategoryProductsPage = subcategoryProductsPageBase
-                                .selectSubSubcategory("Components and parts");
+                                .selectSubSubcategory(SUBSUBCATEGORY);
                 ProductInfoPageBase productInfoPage = subSubcategoryProductsPage
                                 .selectProduct(Product.LAPTOP_REPLACEMENT_PARTS.getProductNames()[0]);
 
@@ -63,30 +61,28 @@ public class WebTest implements IAbstractTest {
                 homePage.open();
                 assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-                SearchPageBase searchPage = homePage.searchProduct("bmw e30");
+                SearchPageBase searchPage = homePage.searchProduct(SEARCH_DATA);
                 foundMatchingResults(searchPage);
 
-                searchPage = searchPage.clickBuyFormat(BuyingFormat.BUY_IT_NOW.getFormatName());
+                searchPage = searchPage.clickBuyFormat(BUYING_FORMAT);
                 foundMatchingResults(searchPage);
 
-                searchPage = searchPage.clickCondition(Condition.NEW.getConditionName());
+                searchPage = searchPage.clickCondition(CONDITION);
                 foundMatchingResults(searchPage);
 
                 SoftAssert softAssert = new SoftAssert();
-                ProductInfoPageBase productInfoPageBase = searchPage.choseProduct(
-                                "NEW E30 Bmw e30 Under dash kick panel E30 51451917353-51451884247- 51451917351");
-               
-                softAssert.assertEquals(productInfoPageBase.readTitle(),
-                                "NEW E30 Bmw e30 Under dash kick panel E30 51451917353-51451884247- 51451917351");
-                softAssert.assertEquals(productInfoPageBase.readPrice(), "US $85.00");
+                ProductInfoPageBase productInfoPageBase = searchPage.choseProduct(PRODUCT_NAME);
+
+                softAssert.assertEquals(productInfoPageBase.readTitle(),PRODUCT_NAME);
+                softAssert.assertEquals(productInfoPageBase.readPrice(), PRODUCT_PRICE);
                 productInfoPageBase.addToChart();
                 CartPageBase cartPageBase = productInfoPageBase.clickInChartButton();
                 cartPageBase.clickCheckout();
                 CheckoutInformationPageBase checkoutInformationPageBase = cartPageBase.clickGuestButtton();
-                checkoutInformationPageBase.fillShipInformations(ShipData.SHIPDATA1);
-                assertEquals(checkoutInformationPageBase.getCity(), ShipData.SHIPDATA1.getCity());
+                checkoutInformationPageBase.fillShipInformations(SHIP_DATA);
+                assertEquals(checkoutInformationPageBase.getCity(), SHIP_DATA.getCity());
                 checkoutInformationPageBase.clickDoneButton();
-                checkoutInformationPageBase.choosePaymentMethod("PayPal");
+                checkoutInformationPageBase.choosePaymentMethod(PAYMENT_METHOD);
                 softAssert.assertAll();
         }
 
@@ -96,6 +92,7 @@ public class WebTest implements IAbstractTest {
                 WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
                 wait.until(driver -> searchResults.size() > 0);
                 softAssert.assertTrue(searchResults.size() > 0, "No results!");
+                softAssert.assertAll();
                 /*
                  * boolean foundMatchingResult = searchResults.stream()
                  * .anyMatch(result ->
@@ -103,7 +100,7 @@ public class WebTest implements IAbstractTest {
                  * Assert.assertTrue(foundMatchingResult,
                  * "No matched results to searched parted: " + "bmw e30");
                  */
-                softAssert.assertAll();
+
         }
 
 }

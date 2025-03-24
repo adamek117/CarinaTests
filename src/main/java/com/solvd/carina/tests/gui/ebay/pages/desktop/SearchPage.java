@@ -8,10 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.solvd.carina.tests.gui.ebay.WindowUtils;
 import com.solvd.carina.tests.gui.ebay.pages.common.ProductInfoPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.SearchPageBase;
-
+import com.solvd.carina.tests.gui.utils.WindowUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 

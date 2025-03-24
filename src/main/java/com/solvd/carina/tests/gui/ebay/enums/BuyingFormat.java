@@ -4,7 +4,7 @@ public enum BuyingFormat {
     BUY_IT_NOW("Buy It Now"),
     ALL_LISTINGS("All listings"),
     AUCTION("Auction"),
-    ACCPETS_OFFERS("Accepts Offers");
+    ACCEPTS_OFFERS("Accepts Offers");
 
     private final String formatName;
 

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.solvd.carina.tests.intefaces.TestData.YahooTestData.*;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -33,7 +34,7 @@ public class WebYahooTests implements IAbstractTest {
         WeatherPageBase weatherPage = homePage.clickSeeMore();
         assertTrue(weatherPage.isForecastFrameVisible());
 
-        weatherPage.chooseCity("New York");
+        weatherPage.chooseCity(CITY_NAME);
         assertTrue(weatherPage.isForecastFrameVisible());
         //assertEquals(weatherPage.getCurrentCityName(), "New York");
 
@@ -79,8 +80,8 @@ public class WebYahooTests implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        SubcategoryFinancePageBase subcategoryFinancePageBase = homePage.chooseFinanceSubcategory("Markets");
-        SubSubcategoryFinancePageBase subSubcategoryFinancePageBase = subcategoryFinancePageBase.selectMarketsSubSubcategory("Stocks: Most Actives");
-        StockPageBase stockPageBase = subSubcategoryFinancePageBase.chooseStock("TSLA");
+        SubcategoryFinancePageBase subcategoryFinancePageBase = homePage.chooseFinanceSubcategory(FINANCE_SUBCATEGORY);
+        SubSubcategoryFinancePageBase subSubcategoryFinancePageBase = subcategoryFinancePageBase.selectMarketsSubSubcategory(MARKETS_SUBCATEGORY);
+        StockPageBase stockPageBase = subSubcategoryFinancePageBase.chooseStock(STOCK_NAME);
     }
 }

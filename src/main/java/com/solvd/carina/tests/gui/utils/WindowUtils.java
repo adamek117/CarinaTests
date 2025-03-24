@@ -1,4 +1,4 @@
-package com.solvd.carina.tests.gui.ebay;
+package com.solvd.carina.tests.gui.utils;
 
 import org.openqa.selenium.WebDriver;
 
