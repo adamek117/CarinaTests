@@ -1,9 +1,6 @@
 package com.solvd.carina.tests.gui.yahoo.pages.desktop;
 
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,7 +12,6 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
-    private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
 
     @FindBy(css = "#ybar-l1-nav > li > button > span")
     private ExtendedWebElement moreCategory;
@@ -47,7 +43,7 @@ public class HomePage extends HomePageBase {
             String currentSubcategoryElement = subcategoryElement.getText();
             if (subcategory.equalsIgnoreCase(currentSubcategoryElement)) {
                 subcategoryElement.click();
-                return initPage(getDriver(), SubcategoryFinancePageBase.class, subcategory);
+                return initPage(getDriver(), SubcategoryFinancePageBase.class);
             }
         }
         return null;

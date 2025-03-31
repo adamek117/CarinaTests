@@ -1,4 +1,4 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.api;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,4 +1,4 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.api;
 
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.atomic.AtomicInteger;

@@ -11,6 +11,6 @@ public abstract class SubSubcategoryFinancePageBase extends AbstractPage{
     }
 
     public abstract StockPageBase chooseStock(String stockName);
-    
+    public abstract StockPageBase chooseTeslaStock();
 
 }

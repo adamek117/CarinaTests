@@ -25,7 +25,7 @@ public enum Product {
     private final String[] prices;
     private final String[] descriptions;
 
-    Product(String[] titles, String[] prices, String[] descriptions) {
+    private Product(String[] titles, String[] prices, String[] descriptions) {
         this.titles = titles;
         this.prices = prices;
         this.descriptions = descriptions;

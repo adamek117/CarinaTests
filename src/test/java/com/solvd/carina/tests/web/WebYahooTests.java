@@ -1,4 +1,4 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,8 @@ import static com.solvd.carina.tests.intefaces.TestData.YahooTestData.*;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
+import com.solvd.carina.tests.gui.yahoo.components.Chart;
+import com.solvd.carina.tests.gui.yahoo.components.ToolTip;
 import com.solvd.carina.tests.gui.yahoo.enums.WeatherForecast;
 import com.solvd.carina.tests.gui.yahoo.pages.common.HomePageBase;
 import com.solvd.carina.tests.gui.yahoo.pages.common.StockPageBase;
@@ -21,7 +23,6 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 
 
 public class WebYahooTests implements IAbstractTest {
-
     @Test
     @MethodOwner(owner = "adam")
     @TestLabel(name = "feature", value = { "web", "regression" })
@@ -36,7 +37,7 @@ public class WebYahooTests implements IAbstractTest {
 
         weatherPage.chooseCity(CITY_NAME);
         assertTrue(weatherPage.isForecastFrameVisible());
-        //assertEquals(weatherPage.getCurrentCityName(), "New York");
+        assertEquals(weatherPage.getCurrentCityName(),CITY_NAME);
 
         List<Map<String, String>> forecastData = weatherPage.getForecastData();
         String activeUnit = weatherPage.getActiveTemperatureUnit();
@@ -45,7 +46,6 @@ public class WebYahooTests implements IAbstractTest {
         for (WeatherForecast forecast : WeatherForecast.values()) {
             Map<String, String> data = new HashMap<>();
             data.put("day", forecast.getDay());
-            // data.put("weatherCondition", forecast.getWeatherCondition());
             data.put("precipitation", forecast.getPrecipitation());
 
             if ("Celsius".equalsIgnoreCase(activeUnit)) {
@@ -65,8 +65,6 @@ public class WebYahooTests implements IAbstractTest {
             Map<String, String> actual = forecastData.get(i);
 
             assertEquals(expected.get("day"), actual.get("day"));
-            // Assert.assertEquals(expected.get("weatherCondition"),
-            // actual.get("weatherCondition"));
             assertEquals(expected.get("precipitation"), actual.get("precipitation"));
             assertEquals(expected.get("highTemperature"), actual.get("highTemperature"));
             assertEquals(expected.get("lowTemperature"), actual.get("lowTemperature"));
@@ -81,7 +79,20 @@ public class WebYahooTests implements IAbstractTest {
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page is not opened");
         SubcategoryFinancePageBase subcategoryFinancePageBase = homePage.chooseFinanceSubcategory(FINANCE_SUBCATEGORY);
+        assertTrue(subcategoryFinancePageBase.isUrlAsExpected("https://finance.yahoo.com/calendar/"));
         SubSubcategoryFinancePageBase subSubcategoryFinancePageBase = subcategoryFinancePageBase.selectMarketsSubSubcategory(MARKETS_SUBCATEGORY);
-        StockPageBase stockPageBase = subSubcategoryFinancePageBase.chooseStock(STOCK_NAME);
+        StockPageBase stockPageBase = subSubcategoryFinancePageBase.chooseTeslaStock();
+        Chart chart =stockPageBase.getChart();
+        chart.selectPeriod(CHART_PERIOD_NAME);
+        chart.hoverChartAndClickOnPoint(X_PERCENT, Y_PERCENT);
+        ToolTip tooltip = stockPageBase.getTooltip();
+
+        assertTrue(tooltip.getDateFieldName().equalsIgnoreCase(DATE));
+        assertTrue(tooltip.getCloseFieldName().equalsIgnoreCase(CLOSE));
+        assertTrue(tooltip.getOpenFieldName().equalsIgnoreCase(OPEN));
+        assertTrue(tooltip.getHighFieldName().equalsIgnoreCase(HIGH));
+        assertTrue(tooltip.getLowFieldName().equalsIgnoreCase(LOW));
+        assertTrue(tooltip.getVolumeFieldName().equalsIgnoreCase(VOLUME));
+        
     }
-}
+} 

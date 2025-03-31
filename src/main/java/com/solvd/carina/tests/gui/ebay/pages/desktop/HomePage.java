@@ -60,7 +60,6 @@ public class HomePage extends HomePageBase {
     @Override
     public void chooseLanguagePage() {
         openLaguageList();
-
         if (!languageList.isEmpty()) {
             for (ExtendedWebElement languageElement : languageList) {
                 String localeString = Configuration.getRequired(WebDriverConfiguration.Parameter.LOCALE);
@@ -77,21 +76,17 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
+    public String getSearchButtonText() {
+        assertElementPresent(searchButton);
+        return searchButton.getText();
+    }
+
+    @Override
     public String getWelcomeText() {
         if (welcomeText.isPresent()) {
             return welcomeText.getText();
         }
         throw new NoSuchElementException("Welcome Text is not present");
-    }
-
-    /*
-     * private boolean isWelcomeTextPresent(){
-     * return welcomeText.isPresent();
-     * }
-     */
-
-    private void openLaguageList() {
-        languageButton.hover();
     }
 
     @Override
@@ -116,6 +111,10 @@ public class HomePage extends HomePageBase {
         searchBox.type(product);
         searchButton.click();
         return initPage(getDriver(), SearchPageBase.class);
+    }
+
+    private void openLaguageList() {
+        languageButton.hover();
     }
 
     private Locale parseLocale(String localeToParse) {
