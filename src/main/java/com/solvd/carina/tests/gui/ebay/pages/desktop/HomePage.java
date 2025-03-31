@@ -43,12 +43,6 @@ public class HomePage extends HomePageBase {
     @FindBy(css = "#s0-1-6-1-1-18\\[2\\[4\\]\\]-7-dialog > div > ul > li > a > span")
     private List<ExtendedWebElement> languageList;
 
-    /*
-     * //@FindBy(css = ".vl-flyout-nav__sub-cat-col")
-     * 
-     * @FindBy(className = "vl-flyout-nav__sub-cat-col")
-     * private List<ExtendedWebElement> subcategories;
-     */ // tu musi być inna implementacja
 
     public HomePage(WebDriver driver) {
         super(driver);
