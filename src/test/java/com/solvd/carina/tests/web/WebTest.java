@@ -1,4 +1,4 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.web;
 
 import java.time.Duration;
 import java.util.List;
@@ -10,6 +10,9 @@ import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.solvd.carina.tests.gui.ebay.components.CardPageProductItem;
+import com.solvd.carina.tests.gui.ebay.components.CheckoutProductItem;
+import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.enums.Product;
 import com.solvd.carina.tests.gui.ebay.pages.common.CartPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
@@ -25,6 +28,7 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 
 public class WebTest implements IAbstractTest {
+
         @Test
         @MethodOwner(owner = "adam")
         @TestLabel(name = "feature", value = { "web", "regression" })
@@ -42,12 +46,13 @@ public class WebTest implements IAbstractTest {
                 ProductInfoPageBase productInfoPage = subSubcategoryProductsPage
                                 .selectProduct(Product.LAPTOP_REPLACEMENT_PARTS.getProductNames()[0]);
 
+                ProductItem productItem = productInfoPage.getProduct();
                 SoftAssert softAssert = new SoftAssert();
-                softAssert.assertEquals(productInfoPage.readTitle(),
+                softAssert.assertEquals(productItem.readProductTitle(),
                                 Product.LAPTOP_REPLACEMENT_PARTS.getProductNames()[0]);
-                softAssert.assertEquals(productInfoPage.readPrice(),
+                softAssert.assertEquals(productItem.readProductPrice(),
                                 Product.LAPTOP_REPLACEMENT_PARTS.getProductPrices()[0]);
-                softAssert.assertEquals(productInfoPage.readDescription(),
+                softAssert.assertEquals(productItem.readProductDescription(),
                                 Product.LAPTOP_REPLACEMENT_PARTS.getProductDescriptions()[0]);
                 softAssert.assertAll();
         }
@@ -72,15 +77,25 @@ public class WebTest implements IAbstractTest {
 
                 SoftAssert softAssert = new SoftAssert();
                 ProductInfoPageBase productInfoPageBase = searchPage.choseProduct(PRODUCT_NAME);
+                ProductItem productItem = productInfoPageBase.getProduct();
 
-                softAssert.assertEquals(productInfoPageBase.readTitle(),PRODUCT_NAME);
-                softAssert.assertEquals(productInfoPageBase.readPrice(), PRODUCT_PRICE);
+                softAssert.assertEquals(productItem.readProductTitle(), PRODUCT_NAME);
+                softAssert.assertEquals(productItem.readProductPrice(), PRODUCT_PRICE);
                 productInfoPageBase.addToChart();
+
                 CartPageBase cartPageBase = productInfoPageBase.clickInChartButton();
+                CardPageProductItem cartProductItem = cartPageBase.getCartPageProductItem(0);
+                assertEquals(cartProductItem.readProductTitle(), PRODUCT_NAME);
+                assertEquals(cartProductItem.readProductPrice(), PRODUCT_PRICE_IN_CART_IN_CHECKOUT);
                 cartPageBase.clickCheckout();
+
                 CheckoutInformationPageBase checkoutInformationPageBase = cartPageBase.clickGuestButtton();
+                CheckoutProductItem checkoutProductItem = checkoutInformationPageBase.getCheckoutProductItem();
+                assertEquals(checkoutProductItem.readItemTitle(), PRODUCT_NAME);
+                assertEquals(checkoutProductItem.readItemPrice(), PRODUCT_PRICE_IN_CART_IN_CHECKOUT);
+
                 checkoutInformationPageBase.fillShipInformations(SHIP_DATA);
-                assertEquals(checkoutInformationPageBase.getCity(), SHIP_DATA.getCity());
+
                 checkoutInformationPageBase.clickDoneButton();
                 checkoutInformationPageBase.choosePaymentMethod(PAYMENT_METHOD);
                 softAssert.assertAll();
@@ -93,14 +108,6 @@ public class WebTest implements IAbstractTest {
                 wait.until(driver -> searchResults.size() > 0);
                 softAssert.assertTrue(searchResults.size() > 0, "No results!");
                 softAssert.assertAll();
-                /*
-                 * boolean foundMatchingResult = searchResults.stream()
-                 * .anyMatch(result ->
-                 * result.getText().toLowerCase().contains("bmw e30".toLowerCase()));
-                 * Assert.assertTrue(foundMatchingResult,
-                 * "No matched results to searched parted: " + "bmw e30");
-                 */
-
         }
 
 }

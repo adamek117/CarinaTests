@@ -1,8 +1,10 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.web.dataproviders;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
+
+import com.solvd.carina.tests.gui.ebay.components.ProductItem;
 import com.solvd.carina.tests.gui.ebay.enums.Product;
 import com.solvd.carina.tests.gui.ebay.pages.common.CategoryProductsPageBase;
 import com.solvd.carina.tests.gui.ebay.pages.common.HomePageBase;
@@ -41,11 +43,13 @@ public class DataProviderEbayTests implements IAbstractTest {
                 .selectSubSubcategory(subSubcategory);
         ProductInfoPageBase productInfoPage = subSubcategoryProductsPage
                 .selectProduct(Product.LAPTOP_REPLACEMENT_PARTS.getProductNames()[productIndex]);
-        assertEquals(productInfoPage.readTitle(), product.getProductNames()[productIndex]);
-        assertEquals(productInfoPage.readPrice(), product.getProductPrices()[productIndex]);
+
+        ProductItem productItem = productInfoPage.getProduct();
+        assertEquals(productItem.readProductTitle(), product.getProductNames()[productIndex]);
+        assertEquals(productItem.readProductPrice(), product.getProductPrices()[productIndex]);
 
         String expectedDescription = product.getProductDescriptions().length > productIndex ? product.getProductDescriptions()[productIndex] : null;
-        String actualDescription = productInfoPage.readDescription();
+        String actualDescription = productItem.readProductDescription();
 
         if (actualDescription != null && !expectedDescription.isEmpty() ) {
             assertEquals(actualDescription, expectedDescription, "Description mismatch for product: " + product.getProductNames()[productIndex]);

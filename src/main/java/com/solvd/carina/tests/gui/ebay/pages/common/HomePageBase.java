@@ -24,6 +24,8 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract String getWelcomeText();
 
+    public abstract String getSearchButtonText();
+
     @Override
     public void open() {
         super.open();

@@ -1,4 +1,4 @@
-package com.solvd.carina.tests;
+package com.solvd.carina.tests.web;
 
 import java.util.Locale;
 
@@ -34,11 +34,9 @@ public class WebLocalizationTests extends AbstractTest {
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.chooseLanguagePage();
-
         SoftAssert softAssert = new SoftAssert();
-        String actualWelcomeText = homePage.getWelcomeText();
-        String expectedWelcomeText= L10N.getText("EbayPage.welcomeText");
-        softAssert.assertEquals(actualWelcomeText,expectedWelcomeText);
+        softAssert.assertEquals(homePage.getWelcomeText(),L10N.getText("EbayPage.welcomeText"));
+        softAssert.assertEquals(homePage.getSearchButtonText(),L10N.getText("EbayPage.buttonText"));
         softAssert.assertAll();
 
     }

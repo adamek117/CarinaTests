@@ -120,7 +120,6 @@ public class WeatherPage extends WeatherPageBase {
         for (int i = 0; i < rowCount; i++) {
             Map<String, String> forecastData = new HashMap<>();
             forecastData.put("day", days.get(i).getText().substring(21));
-            System.out.println(days.get(i).getText().substring(21));
             forecastData.put("precipitation", percetangesOfPrecitipation.get(i).getText());
             if (getActiveTemperatureUnit().equals("Celsius")) {
                 highTemperatureCelsius.get(i).waitUntil(ExpectedConditions.visibilityOf(highTemperatureCelsius.get(i)),
