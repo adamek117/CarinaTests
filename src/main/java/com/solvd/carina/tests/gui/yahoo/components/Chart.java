@@ -1,6 +1,5 @@
 package com.solvd.carina.tests.gui.yahoo.components;
 
-
 import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -41,11 +40,10 @@ public class Chart extends AbstractUIObject {
     }
 
     public void hoverChartAndClickOnPoint(double xPercent, double yPercent) {
-        
+
         waitUntil(ExpectedConditions.and(
-            ExpectedConditions.presenceOfElementLocated(chartCanvas.getBy()),
-            ExpectedConditions.visibilityOf(chartCanvas.getElement())
-        ), 10);
+                ExpectedConditions.presenceOfElementLocated(chartCanvas.getBy()),
+                ExpectedConditions.visibilityOf(chartCanvas.getElement())), 10);
 
         chartCanvas.scrollTo();
         pause(1.0);
@@ -58,7 +56,7 @@ public class Chart extends AbstractUIObject {
 
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-    
+
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             pause(5);
@@ -68,6 +66,7 @@ public class Chart extends AbstractUIObject {
         }
 
     }
+
     private Point getCoordinates(WebElement element, double xPercent, double yPercent) {
 
         Rectangle rect = element.getRect();

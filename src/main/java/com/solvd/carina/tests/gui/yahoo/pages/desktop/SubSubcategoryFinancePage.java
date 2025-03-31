@@ -32,10 +32,8 @@ public class SubSubcategoryFinancePage  extends SubSubcategoryFinancePageBase{
         for(ExtendedWebElement stockElement :stocksElements){
             stockElement.scrollTo();
             String currentStockElement = stockElement.getText();
-            System.out.println(currentStockElement);
             if(stockName.equalsIgnoreCase(currentStockElement)){
                 stockElement.click();
-                waitForJSToLoad();
                 return initPage(getDriver(), StockPageBase.class);
             }
             throw new NoSuchElementException(stockName + " can't be found");
